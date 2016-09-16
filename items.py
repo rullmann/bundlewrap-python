@@ -1,12 +1,12 @@
 pkg_yum = {
     "python": {},
-    "python-setuptools": {},
     "python-devel": {},
     "python-tools": {},
     "python-virtualenv": {},
 }
 
 if node.has_bundle("epel"):
+    pkg_yum['python-setuptools'] = {}
     pkg_yum['python-pip'] = {
         'needs': [
             "pkg_yum:epel-release",
@@ -14,9 +14,12 @@ if node.has_bundle("epel"):
         ],
     }
 else:
+    pkg_yum['python2-setuptools'] = {}
+    pkg_yum['python3-setuptools'] = {}
     pkg_yum['python-pip'] = {
         'needs': [
-            "pkg_yum:python-setuptools",
+            "pkg_yum:python2-setuptools",
+            "pkg_yum:python3-setuptools",
         ],
     }
 
