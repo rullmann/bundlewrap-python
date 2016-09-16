@@ -2,7 +2,6 @@ pkg_yum = {
     "python": {},
     "python-devel": {},
     "python-tools": {},
-    "python-virtualenv": {},
 }
 
 if node.has_bundle("epel"):
@@ -16,6 +15,8 @@ if node.has_bundle("epel"):
 else:
     pkg_yum['python2-setuptools'] = {}
     pkg_yum['python3-setuptools'] = {}
+    pkg_yum['python2-virtualenv'] = {}
+    pkg_yum['python3-virtualenv'] = {}
     pkg_yum['python-pip'] = {
         'needs': [
             "pkg_yum:python2-setuptools",
