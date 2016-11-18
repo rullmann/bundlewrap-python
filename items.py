@@ -1,4 +1,4 @@
-pkg_yum = {
+pkg_dnf = {
     "python": {},
     "python-devel": {},
     "python-tools": {},
@@ -8,8 +8,8 @@ pkg_yum = {
     "python3-virtualenv": {},
     "python-pip": {
         'needs': [
-            "pkg_yum:python2-setuptools",
-            "pkg_yum:python3-setuptools",
+            "pkg_dnf:python2-setuptools",
+            "pkg_dnf:python3-setuptools",
         ],
     },
 }
@@ -19,6 +19,6 @@ pkg_pip = {}
 for package in node.metadata.get('python', {}).get('pip_packages', {}):
     pkg_pip['{}'.format(package)] = {
         'needs': [
-            "pkg_yum:python-pip",
+            "pkg_dnf:python-pip",
         ],
     }
