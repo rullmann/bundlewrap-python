@@ -11,6 +11,9 @@ pkg_dnf = {
 
 pkg_pip = {}
 
+if node.os == 'fedora' and node.os_version >= (27):
+    pkg_dnf['python2-devel'] = {}
+
 for package in node.metadata.get('python', {}).get('pip_packages', {}):
     pkg_pip['{}'.format(package)] = {
         'needs': ['pkg_dnf:python3-pip'],
